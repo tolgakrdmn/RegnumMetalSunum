@@ -3,43 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yeni Modeller - Regnum</title>
+  <title>Regnum Sunum Erişimi</title>
   <style>
     * { box-sizing: border-box; }
 
-    @font-face {
-      font-family: 'Gilroy';
-      src: url('./288ppi/Gilroy-SemiBold.ttf') format('truetype');
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Gilroy';
-      src: url('./288ppi/Gilroy-RegularItalic.ttf') format('truetype');
-      font-weight: 400;
-      font-style: italic;
-    }
-
     body {
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      font-family: 'Gilroy', sans-serif;
-      background: #ffffff;
+      background: url('./288ppi/arka_plan_tek_renk.webp') no-repeat center center;
+      background-size: cover;
+    }
+
+    .login-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .login-box {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .login-logo {
+      max-height: 80px;
+      margin-bottom: 30px;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 30px;
+      font-size: 16px;
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .error {
+      color: red;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    #main-content {
+      display: none;
     }
 
     .background-wrapper {
-      background: url('./288ppi/arka_plan_tek_renk.webp') no-repeat center center;
-      background-size: cover;
       max-width: 1080px;
       margin: 0 auto;
       position: relative;
       z-index: 2;
-
-      /* Eklendi */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
 
     .pattern-left, .pattern-right {
@@ -53,13 +89,8 @@
       display: none;
     }
 
-    .pattern-left {
-      left: 0;
-    }
-
-    .pattern-right {
-      right: 0;
-    }
+    .pattern-left { left: 0; }
+    .pattern-right { right: 0; }
 
     @media (min-width: 1081px) {
       .pattern-left, .pattern-right {
@@ -70,14 +101,8 @@
     .container {
       max-width: 1080px;
       margin: 0 auto;
-      padding: 20px 10px 80px;
+      padding: 20px 10px 100px;
       text-align: center;
-
-      /* Eklendi */
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
     .logo {
@@ -101,7 +126,7 @@
       border: none;
       color: #000;
       font-weight: 600;
-      font-family: 'Gilroy', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       transition: opacity 0.3s ease;
     }
 
@@ -116,27 +141,16 @@
     }
 
     @media (min-width: 1920px) {
-      .gallery {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      .gallery { grid-template-columns: repeat(4, 1fr); }
     }
-
     @media (min-width: 1080px) and (max-width: 1919px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .gallery { grid-template-columns: repeat(3, 1fr); }
     }
-
     @media (max-width: 1079px) and (min-width: 768px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .gallery { grid-template-columns: repeat(3, 1fr); }
     }
-
     @media (max-width: 767px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
     }
 
     .item {
@@ -150,9 +164,7 @@
       display: block;
     }
 
-    .item.hidden {
-      display: none;
-    }
+    .item.hidden { display: none; }
 
     .item img {
       width: 100%;
@@ -162,7 +174,11 @@
     }
 
     .footer-link {
-      margin-top: 50px;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
       text-align: center;
     }
 
@@ -174,12 +190,26 @@
   </style>
 </head>
 <body>
-  <div class="pattern-left"></div>
-  <div class="pattern-right"></div>
 
-  <div class="background-wrapper">
-    <div class="container">
-      <div>
+  <!-- Şifre Ekranı -->
+  <div class="login-wrapper" id="login-form">
+    <img src="./288ppi/logo.webp" alt="Regnum Logo" class="login-logo" />
+    <div class="login-box">
+      <h2>Gizli Koleksiyon Girişi</h2>
+      <p>Regnum’un özel koleksiyonuna giriş yapmak üzeresiniz.</p>
+      <input type="password" id="password-input" placeholder="Şifre girin" />
+      <button onclick="checkPassword()">Giriş</button>
+      <div class="error" id="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- Ana Sayfa İçeriği -->
+  <div id="main-content">
+    <div class="pattern-left"></div>
+    <div class="pattern-right"></div>
+
+    <div class="background-wrapper">
+      <div class="container">
         <img src="./288ppi/logo.webp" alt="Regnum Logo" class="logo" />
         <img src="./288ppi/Varlık 33.webp" alt="Yeni Modeller" style="max-width: 240px; display: block; margin: 0 auto 20px;" />
 
@@ -193,9 +223,7 @@
         <div class="gallery" id="gallery">
           <div class="item kulp"><img src="./288ppi/Kulp_Elisse_kulp.webp" alt="Elisse Kulp" /></div>
           <div class="item dugme"><img src="./288ppi/Dugme_Crea_dugme.webp" alt="Crea Düğme" /></div>
-          <a href="./crea_kare_dugme_qr/index.html" class="item dugme">
-            <img src="./288ppi/Dugme_Crea_kare.webp" alt="Crea Kare" />
-          </a>
+          <a href="./crea_kare_dugme_qr/index.html" class="item dugme"><img src="./288ppi/Dugme_Crea_kare.webp" alt="Crea Kare" /></a>
           <div class="item dugme"><img src="./288ppi/Dugme_Crea_ucgen.webp" alt="Crea Üçgen" /></div>
           <div class="item dugme"><img src="./288ppi/Dugme_luna.webp" alt="Luna Düğme" /></div>
           <div class="item kulp"><img src="./288ppi/Kulp_Payanda_1.webp" alt="Payanda Kulp" /></div>
@@ -204,14 +232,38 @@
           <div class="item ayak"><img src="./288ppi/Ayak_vito.webp" alt="Vito Ayak" /></div>
         </div>
       </div>
+    </div>
 
-      <div class="footer-link" onclick="window.open('https://www.regnummetal.com', '_blank')">
-        <img src="./288ppi/Web_yonlendirme.webp" alt="Regnum Web Sitesi" />
-      </div>
+    <div class="footer-link" onclick="window.open('https://www.regnummetal.com', '_blank')">
+      <img src="./288ppi/Web_yonlendirme.webp" alt="Regnum Web Sitesi" />
     </div>
   </div>
 
   <script>
+    const correctPassword = "regnum2025";
+    const loginForm = document.getElementById("login-form");
+    const mainContent = document.getElementById("main-content");
+
+    window.onload = () => {
+      if (sessionStorage.getItem("regnum_access") === "granted") {
+        loginForm.style.display = "none";
+        mainContent.style.display = "block";
+      }
+    };
+
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const error = document.getElementById("error-msg");
+
+      if (input === correctPassword) {
+        sessionStorage.setItem("regnum_access", "granted");
+        loginForm.style.display = "none";
+        mainContent.style.display = "block";
+      } else {
+        error.textContent = "Hatalı şifre, lütfen tekrar deneyin.";
+      }
+    }
+
     function filterItems(category, element) {
       const buttons = document.querySelectorAll('.filter-buttons button');
       buttons.forEach(btn => btn.classList.remove('active'));
@@ -222,16 +274,13 @@
 
       allItems.forEach(item => {
         const match = category === 'all' || item.classList.contains(category);
-        if (match) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
+        item.classList.toggle('hidden', !match);
       });
 
       const sortedVisible = Array.from(allItems).filter(i => !i.classList.contains('hidden'));
       sortedVisible.forEach(item => gallery.appendChild(item));
     }
   </script>
+
 </body>
 </html>
