@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yeni Modeller - Regnum</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    @font-face {
+      font-family: 'Gilroy';
+      src: url('Gilroy-SemiBold.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Gilroy';
+      src: url('Gilroy-RegularItalic.ttf') format('truetype');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Gilroy', sans-serif;
+      background: #ffffff;
+    }
+
+    .background-wrapper {
+      background: url('arka_plan_tek_renk.webp') no-repeat center center;
+      background-size: cover;
+      max-width: 1080px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pattern-left, .pattern-right {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 200px;
+      background: url('pattern_arkaplan.webp') repeat-y center center;
+      background-size: 500%;
+      z-index: 1;
+      display: none;
+    }
+
+    .pattern-left {
+      left: 0;
+    }
+
+    .pattern-right {
+      right: 0;
+    }
+
+    @media (min-width: 1081px) {
+      .pattern-left, .pattern-right {
+        display: block;
+      }
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px 10px 80px;
+      text-align: center;
+    }
+
+    .logo {
+      width: auto;
+      max-height: 80px;
+      margin: 20px auto;
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-buttons button {
+      font-size: 16px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #000;
+      font-weight: 600;
+      font-family: 'Gilroy', sans-serif;
+      transition: opacity 0.3s ease;
+    }
+
+    .filter-buttons button.active {
+      opacity: 0.5;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    @media (min-width: 1920px) {
+      .gallery {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (min-width: 1080px) and (max-width: 1919px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 1079px) and (min-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .item {
+      background: white;
+      padding: 10px;
+      border-radius: 6px;
+      width: 100%;
+      max-width: 320px;
+      margin: auto;
+      transition: opacity 0.3s ease;
+      display: block;
+    }
+
+    .item.hidden {
+      display: none;
+    }
+
+    .item img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      display: block;
+    }
+
+    .footer-link {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .footer-link img {
+      height: 25px;
+      width: auto;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="pattern-left"></div>
+  <div class="pattern-right"></div>
+
+  <div class="background-wrapper">
+    <div class="container">
+      <img src="logo.webp" alt="Regnum Logo" class="logo" />
+
+      <div class="filter-buttons">
+        <button class="active" onclick="filterItems('all', this)">Tümü</button>
+        <button onclick="filterItems('kulp', this)">Kulp</button>
+        <button onclick="filterItems('dugme', this)">Düğme</button>
+        <button onclick="filterItems('ayak', this)">Ayak</button>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <div class="item kulp"><img src="Kulp_Elisse_kulp.webp" alt="Elisse Kulp" /></div>
+        <div class="item dugme"><img src="Dugme_Crea_dugme.webp" alt="Crea Düğme" /></div>
+        <a href="../crea_kare_dugme_qr/index.html" class="item dugme">
+          <img src="Dugme_Crea_kare.webp" alt="Crea Kare" />
+        </a>
+        <div class="item dugme"><img src="Dugme_Crea_ucgen.webp" alt="Crea Üçgen" /></div>
+        <div class="item dugme"><img src="Dugme_luna.webp" alt="Luna Düğme" /></div>
+        <div class="item kulp"><img src="Kulp_Payanda_1.webp" alt="Payanda Kulp" /></div>
+        <div class="item ayak"><img src="Ayak_Elora.webp" alt="Elora Ayak" /></div>
+        <div class="item ayak"><img src="Ayak_Payanda.webp" alt="Payanda Ayak" /></div>
+        <div class="item ayak"><img src="Ayak_vito.webp" alt="Vito Ayak" /></div>
+      </div>
+
+      <div class="footer-link" onclick="window.open('https://www.regnummetal.com', '_blank')">
+        <img src="Web_yonlendirme.webp" alt="Regnum Web Sitesi" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterItems(category, element) {
+      const buttons = document.querySelectorAll('.filter-buttons button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
+
+      const allItems = document.querySelectorAll('.item');
+      const gallery = document.getElementById('gallery');
+
+      allItems.forEach(item => {
+        const match = category === 'all' || item.classList.contains(category);
+        if (match) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      const sortedVisible = Array.from(allItems).filter(i => !i.classList.contains('hidden'));
+      sortedVisible.forEach(item => gallery.appendChild(item));
+    }
+  </script>
+</body>
+</html>
