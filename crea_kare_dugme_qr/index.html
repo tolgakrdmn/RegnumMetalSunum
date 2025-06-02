@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crea Kare Düğme</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/arka_plan_tek_renk.webp') no-repeat center center;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 20px 10px 80px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      position: relative;
+      width: 100%;
+    }
+
+    .back-button {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 28px;
+      width: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .logo {
+      max-height: 80px;
+      height: auto;
+      width: auto;
+    }
+
+    @media (max-width: 1080px) {
+      .back-button {
+        transform: translateY(-50%) scale(1);
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .back-button {
+        transform: translateY(-50%) scale(1.5);
+      }
+    }
+
+    .product-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .video-area {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    video {
+      width: 100%;
+      max-width: 850px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .color-buttons {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      padding: 0 10px;
+      gap: 20px;
+    }
+
+    .color-buttons div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      flex: 1;
+      transition: opacity 0.3s ease;
+      opacity: 1;
+    }
+
+    .color-buttons div.active {
+      opacity: 0.5;
+    }
+
+    .color-buttons img {
+      width: auto;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .color-buttons span {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .footer-link {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .footer-link img {
+      height: 25px;
+      width: auto;
+    }
+
+    @media (max-width: 768px) {
+      .color-buttons img {
+        height: 50px;
+      }
+
+      .footer-link img {
+        height: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wrapper {
+        padding: 10px 5px 80px 5px;
+      }
+
+      .color-buttons {
+        gap: 10px;
+      }
+
+      .color-buttons img {
+        height: 45px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="logo-row">
+      <img src="C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/geri_icon.webp" alt="Geri Dön" class="back-button" onclick="history.back()">
+      <img src="C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/Varlık 13.webp" class="logo" alt="Regnum Logo" />
+    </div>
+
+    <div class="product-name">RGN.K06 / <strong>Crea Kare Düğme</strong></div>
+
+    <div class="video-area">
+      <video id="productVideo" autoplay muted loop preload="auto" playsinline>
+        <source src="C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/crea_dugme_gold.mp4" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+      </video>
+    </div>
+
+    <div class="color-buttons">
+      <div onclick="changeVideo('crea_dugme_gold.mp4', this)" class="active">
+        <img src="C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/gold_button.webp" alt="Gold"><span>Gold</span>
+      </div>
+      <div onclick="changeVideo('crea_dugme_mat_siyah.mp4', this)">
+        <img src="C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/Matsiyah_button.webp" alt="Mat Siyah"><span>Mat Siyah</span>
+      </div>
+      <div onclick="changeVideo('crea_dugme_bronz.mp4', this)">
+        <img src="C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/bronz_button.webp" alt="Bronz"><span>Bronz</span>
+      </div>
+      <div onclick="changeVideo('crea_dugme_krom.mp4', this)">
+        <img src="C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/krom_button.webp" alt="Krom"><span>Krom</span>
+      </div>
+    </div>
+
+    <div class="footer-link" onclick="window.open('https://www.regnummetal.com', '_blank')">
+      <img src="C:/Users/tolga3080/OneDrive - sakschools.sakschools/Masaüstü/qr_video/Ana_Sayfa/crea_kare_dugme_qr/websitesi_yonlendirici_metin.webp" alt="Regnum Metal">
+    </div>
+  </div>
+
+  <script>
+    let video = document.getElementById('productVideo');
+
+    function changeVideo(newSrc, clickedButton) {
+      const currentTime = video.currentTime;
+
+      const newVideo = document.createElement('video');
+      newVideo.src = newSrc;
+      newVideo.muted = true;
+      newVideo.loop = true;
+      newVideo.autoplay = true;
+      newVideo.preload = 'auto';
+      newVideo.id = 'productVideo';
+      newVideo.style.width = '100%';
+      newVideo.style.maxWidth = '850px';
+      newVideo.style.height = 'auto';
+      newVideo.style.objectFit = 'contain';
+      newVideo.setAttribute('playsinline', '');
+
+      newVideo.addEventListener('loadedmetadata', () => {
+        newVideo.currentTime = currentTime;
+        newVideo.play();
+      });
+
+      const videoArea = document.querySelector('.video-area');
+      videoArea.innerHTML = '';
+      videoArea.appendChild(newVideo);
+      video = newVideo;
+
+      const buttons = document.querySelectorAll('.color-buttons div');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      clickedButton.classList.add('active');
+    }
+  </script>
+</body>
+</html>
