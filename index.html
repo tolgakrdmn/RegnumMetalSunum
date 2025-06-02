@@ -35,6 +35,11 @@
       margin: 0 auto;
       position: relative;
       z-index: 2;
+
+      /* Eklendi */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .pattern-left, .pattern-right {
@@ -67,6 +72,12 @@
       margin: 0 auto;
       padding: 20px 10px 80px;
       text-align: center;
+
+      /* Eklendi */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .logo {
@@ -168,28 +179,30 @@
 
   <div class="background-wrapper">
     <div class="container">
-      <img src="./288ppi/logo.webp" alt="Regnum Logo" class="logo" />
-      <img src="./288ppi/Varlık 33.webp" alt="Yeni Modeller" style="max-width: 240px; display: block; margin: 0 auto 20px;" />
+      <div>
+        <img src="./288ppi/logo.webp" alt="Regnum Logo" class="logo" />
+        <img src="./288ppi/Varlık 33.webp" alt="Yeni Modeller" style="max-width: 240px; display: block; margin: 0 auto 20px;" />
 
-      <div class="filter-buttons">
-        <button class="active" onclick="filterItems('all', this)">Tümü</button>
-        <button onclick="filterItems('kulp', this)">Kulp</button>
-        <button onclick="filterItems('dugme', this)">Düğme</button>
-        <button onclick="filterItems('ayak', this)">Ayak</button>
-      </div>
+        <div class="filter-buttons">
+          <button class="active" onclick="filterItems('all', this)">Tümü</button>
+          <button onclick="filterItems('kulp', this)">Kulp</button>
+          <button onclick="filterItems('dugme', this)">Düğme</button>
+          <button onclick="filterItems('ayak', this)">Ayak</button>
+        </div>
 
-      <div class="gallery" id="gallery">
-        <div class="item kulp"><img src="./288ppi/Kulp_Elisse_kulp.webp" alt="Elisse Kulp" /></div>
-        <div class="item dugme"><img src="./288ppi/Dugme_Crea_dugme.webp" alt="Crea Düğme" /></div>
-        <a href="./crea_kare_dugme_qr/index.html" class="item dugme">
-          <img src="./288ppi/Dugme_Crea_kare.webp" alt="Crea Kare" />
-        </a>
-        <div class="item dugme"><img src="./288ppi/Dugme_Crea_ucgen.webp" alt="Crea Üçgen" /></div>
-        <div class="item dugme"><img src="./288ppi/Dugme_luna.webp" alt="Luna Düğme" /></div>
-        <div class="item kulp"><img src="./288ppi/Kulp_Payanda_1.webp" alt="Payanda Kulp" /></div>
-        <div class="item ayak"><img src="./288ppi/Ayak_Elora.webp" alt="Elora Ayak" /></div>
-        <div class="item ayak"><img src="./288ppi/Ayak_Payanda.webp" alt="Payanda Ayak" /></div>
-        <div class="item ayak"><img src="./288ppi/Ayak_vito.webp" alt="Vito Ayak" /></div>
+        <div class="gallery" id="gallery">
+          <div class="item kulp"><img src="./288ppi/Kulp_Elisse_kulp.webp" alt="Elisse Kulp" /></div>
+          <div class="item dugme"><img src="./288ppi/Dugme_Crea_dugme.webp" alt="Crea Düğme" /></div>
+          <a href="./crea_kare_dugme_qr/index.html" class="item dugme">
+            <img src="./288ppi/Dugme_Crea_kare.webp" alt="Crea Kare" />
+          </a>
+          <div class="item dugme"><img src="./288ppi/Dugme_Crea_ucgen.webp" alt="Crea Üçgen" /></div>
+          <div class="item dugme"><img src="./288ppi/Dugme_luna.webp" alt="Luna Düğme" /></div>
+          <div class="item kulp"><img src="./288ppi/Kulp_Payanda_1.webp" alt="Payanda Kulp" /></div>
+          <div class="item ayak"><img src="./288ppi/Ayak_Elora.webp" alt="Elora Ayak" /></div>
+          <div class="item ayak"><img src="./288ppi/Ayak_Payanda.webp" alt="Payanda Ayak" /></div>
+          <div class="item ayak"><img src="./288ppi/Ayak_vito.webp" alt="Vito Ayak" /></div>
+        </div>
       </div>
 
       <div class="footer-link" onclick="window.open('https://www.regnummetal.com', '_blank')">
