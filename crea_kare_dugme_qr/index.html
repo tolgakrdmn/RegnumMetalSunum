@@ -4,10 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crea Kare Düğme</title>
+  <link rel="icon" type="image/svg+xml" href="../288ppi/favicon.svg" />
   <style>
     * {
       box-sizing: border-box;
     }
+
+@font-face {
+  font-family: 'GilroyItalic';
+  src: url('../288ppi/Gilroy-RegularItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GilroySemiBold';
+  src: url('../288ppi/Gilroy-SemiBold.ttf') format('truetype');
+}
+
+.section-heading {
+  font-family: 'GilroySemiBold', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin: 100px 0 10px;
+  color: #000;
+}
 
     body {
       margin: 0;
@@ -15,7 +34,9 @@
       font-family: 'Segoe UI', sans-serif;
       background: url('arka_plan_tek_renk.webp') no-repeat center center;
       background-size: cover;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+
     }
 
     .wrapper {
@@ -89,6 +110,7 @@
       object-fit: contain;
     }
 
+
     .color-buttons {
       display: flex;
       flex-wrap: nowrap;
@@ -125,6 +147,29 @@
       font-size: 12px;
       margin-top: 4px;
     }
+
+.technical-drawing {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.technical-drawing img {
+  width: 100%;           /* Ekrana göre genişlesin */
+  height: auto;          /* Oran korunsun */
+  max-width: 600px;      /* Masaüstü için maksimum genişlik */
+  display: block;        /* Altında boşluk olmasın */
+  margin: 20px auto;     /* Ortalansın ve boşluk ver */
+  border-radius: 6px;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobil uyum için */
+@media (max-width: 768px) {
+  .technical-drawing img {
+    max-width: 90%;      /* Mobilde ekranın %90’ı kadar göster */
+  }
+}
+
 
     .footer-link {
       position: absolute;
@@ -181,6 +226,8 @@
       </video>
     </div>
 
+<h2 class="section-heading">REGNUM RENK KARTELASI</h2>
+
     <div class="color-buttons">
       <div onclick="changeVideo('crea_dugme_gold.mp4', this)" class="active">
         <img src="gold_button.webp" alt="Gold"><span>Gold</span>
@@ -195,6 +242,14 @@
         <img src="krom_button.webp" alt="Krom"><span>Krom</span>
       </div>
     </div>
+
+<h2 class="section-heading">Teknik Görsel ve Ölçüler</h2>
+
+
+    <div class="technical-drawing">
+      <img src="crea_kare_2d.webp" alt="2D Teknik Çizim">
+    </div>
+
 
     <div class="footer-link" onclick="window.open('https://www.regnummetalsunum.com', '_blank')">
       <img src="websitesi_yonlendirici_metin.webp" alt="Regnum Metal">
