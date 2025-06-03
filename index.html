@@ -8,11 +8,11 @@
     * { box-sizing: border-box; }
 
     body {
-     font-family: 'Gilroy', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: url('./288ppi/arka_plan_tek_renk.webp') no-repeat center center;
-  background-size: cover;
+      font-family: 'Gilroy', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('./288ppi/arka_plan_tek_renk.webp') no-repeat center center;
+      background-size: cover;
     }
 
     .pattern-left, .pattern-right {
@@ -131,9 +131,50 @@
       width: auto;
       cursor: pointer;
     }
+
+    #password-screen {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    #password-form {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
+      width: 300px;
+    }
+
+    #password-form input[type="password"] {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    #password-form button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <div id="password-screen">
+    <form id="password-form">
+      <img src="./288ppi/logo.webp" alt="Logo" style="max-height: 50px; margin-bottom: 20px;">
+      <h2>Gizli Koleksiyon Girişi</h2>
+      <p>Regnum’un özel koleksiyonuna giriş yapmak üzeresiniz.</p>
+      <input type="password" placeholder="Şifre" id="password-input">
+      <button type="submit">Giriş</button>
+    </form>
+  </div>
+
   <div class="pattern-left"></div>
   <div class="pattern-right"></div>
 
@@ -153,7 +194,7 @@
         <div class="item kulp"><img src="./288ppi/Kulp_Elisse_kulp.webp" alt="Elisse Kulp" /></div>
         <div class="item dugme"><img src="./288ppi/Dugme_Crea_dugme.webp" alt="Crea Düğme" /></div>
         <a href="./crea_kare_dugme_qr/index.html" class="item dugme"><img src="./288ppi/Dugme_Crea_kare.webp" alt="Crea Kare" /></a>
-        <div class="item dugme"><img src="./288ppi/Dugme_Crea_ucgen.webp" alt="Crea Üçgen" /></div>
+        <div class="item dugme"><img src="./288ppi/Dugme_Crea_ucgen.webp" alt="Crea Öçgen" /></div>
         <div class="item dugme"><img src="./288ppi/Dugme_luna.webp" alt="Luna Düğme" /></div>
         <div class="item kulp"><img src="./288ppi/Kulp_Payanda_1.webp" alt="Payanda Kulp" /></div>
         <div class="item ayak"><img src="./288ppi/Ayak_Elora.webp" alt="Elora Ayak" /></div>
@@ -184,6 +225,29 @@
       const sortedVisible = Array.from(allItems).filter(i => !i.classList.contains('hidden'));
       sortedVisible.forEach(item => gallery.appendChild(item));
     }
+
+    // Şifre kontrol
+    const correctPassword = "regnum2025";
+    const passwordForm = document.getElementById("password-form");
+    const passwordScreen = document.getElementById("password-screen");
+
+    passwordForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = document.getElementById("password-input").value;
+      if (input === correctPassword) {
+        passwordScreen.style.display = "none";
+        localStorage.setItem("regnumAccess", "true");
+      } else {
+        alert("Geçersiz Şifre");
+      }
+    });
+
+    window.addEventListener("load", function () {
+      const access = localStorage.getItem("regnumAccess");
+      if (access === "true") {
+        passwordScreen.style.display = "none";
+      }
+    });
   </script>
 </body>
 </html>
