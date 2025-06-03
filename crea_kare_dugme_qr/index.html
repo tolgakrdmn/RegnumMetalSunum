@@ -61,48 +61,132 @@
     }
 
     .logo-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      position: relative;
-      width: 100%;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+}
 
-    .back-button {
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 28px;
-      width: auto;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
 
-    .logo {
-      max-height: 80px;
-      height: auto;
-      width: auto;
-    }
+.back-button {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%) scale(1);
+  height: 28px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, left 0.3s ease;
+}
 
-    @media (max-width: 1080px) {
-      .back-button {
-        transform: translateY(-50%) scale(1);
-      }
-    }
+/* Ekran 768px ve üstü: biraz büyüt */
+@media (min-width: 768px) {
+  .back-button {
+    transform: translateY(-50%) scale(1.3);
+  }
+}
 
-    @media (min-width: 1080px) {
-      .back-button {
-        transform: translateY(-50%) scale(1.5);
-      }
-    }
+/* Ekran 1024px ve üstü: sabit büyüklükte tut */
+@media (min-width: 1024px) {
+  .back-button {
+    transform: translateY(-50%) scale(1.5);
+  }
+}
 
-    .product-name {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      text-align: center;
+/* Ekran büyüdükçe sola kaydır */
+@media (min-width: 1440px) {
+  .back-button {
+    left: -250px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .back-button {
+    left: -500px;
+  }
+}
+
+
+
+
+ .logo {
+  max-height: 80px;
+  height: auto;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 1080px) {
+  .logo {
+    transform: scale(1.5);
+    transform-origin: center;
+  }
+}
+
+@media (min-width: 1920px) {
+  .logo {
+    transform: scale(2);
+  }
+}
+
+
+
+.product-name {
+  text-align: center;
+  margin-bottom: 10px;
+  transition: margin-top 0.3s ease, font-size 0.3s ease;
+  margin-top: 0px;
+}
+
+.product-name .italic-part {
+  font-family: 'GilroyItalic', sans-serif;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.product-name .semibold-part {
+  font-family: 'GilroySemiBold', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Geniş ekranlarda yukarıdaki font-size’ları büyütelim */
+@media (min-width: 1080px) {
+  .product-name {
+    margin-top: 20px;
+  }
+
+  .product-name .italic-part,
+  .product-name .semibold-part {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .product-name {
+    margin-top: 40px;
+  }
+
+  .product-name .italic-part,
+  .product-name .semibold-part {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .product-name {
+    margin-top: 60px;
+  }
+
+  .product-name .italic-part,
+  .product-name .semibold-part {
+    font-size: 32px;
+  }
+}
+
+
     }
 
     .video-area {
@@ -111,6 +195,19 @@
       justify-content: center;
       align-items: center;
     }
+
+@media (min-width: 1080px) {
+  .video-area video {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .video-area video {
+    max-width: 650px;
+  }
+}
+
 
     video {
       width: 100%;
@@ -221,6 +318,9 @@
       .color-buttons img {
         height: 45px;
       }
+
+}
+
     }
   </style>
 </head>
@@ -231,7 +331,10 @@
       <img src="Varlık 13.webp" class="logo" alt="Regnum Logo" />
     </div>
 
-    <div class="product-name">RGN.K06 / <strong>Crea Kare Düğme</strong></div>
+    <div class="product-name">
+  <span class="italic-part">RGN.K06 /</span>
+  <span class="semibold-part">Crea Kare Düğme</span>
+</div>
 
     <div class="video-area">
       <video id="productVideo" autoplay muted loop preload="auto" playsinline>
