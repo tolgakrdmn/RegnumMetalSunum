@@ -20,13 +20,22 @@
   src: url('../288ppi/Gilroy-SemiBold.ttf') format('truetype');
 }
 
-.section-heading {
-  font-family: 'GilroySemiBold', sans-serif;
-  font-size: 20px;
+.section-title {
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  font-size: 16px;
   text-align: center;
-  margin: 100px 0 10px;
   color: #000;
 }
+
+.renklerimiz {
+  margin: 0px 0 20px;
+}
+
+.teknik-cizim {
+  margin: 100px 0 0px;
+}
+
+
 
     body {
       margin: 0;
@@ -172,13 +181,18 @@
 
 
     .footer-link {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      cursor: pointer;
-      z-index: 1;
-    }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: url('../288ppi/arka_plan_tek_renk.webp') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
 
     .footer-link img {
       height: 25px;
@@ -226,7 +240,7 @@
       </video>
     </div>
 
-<h2 class="section-heading">REGNUM RENK KARTELASI</h2>
+<h2 class="section-title renklerimiz">REGNUM RENK KARTELASI</h2>
 
     <div class="color-buttons">
       <div onclick="changeVideo('crea_dugme_gold.mp4', this)" class="active">
@@ -243,7 +257,7 @@
       </div>
     </div>
 
-<h2 class="section-heading">Teknik Görsel ve Ölçüler</h2>
+<h2 class="section-title teknik-cizim">Teknik Çizim ve Ölçüler</h2>
 
 
     <div class="technical-drawing">
@@ -251,9 +265,9 @@
     </div>
 
 
-    <div class="footer-link" onclick="window.open('https://www.regnummetalsunum.com', '_blank')">
-      <img src="websitesi_yonlendirici_metin.webp" alt="Regnum Metal">
-    </div>
+    <div class="footer-link" onclick="window.open('https://www.regnummetal.com', '_blank')">
+        <img src="../288ppi/Web_yonlendirme.webp" alt="Regnum Web Sitesi" />
+      </div>
   </div>
 
   <script>
